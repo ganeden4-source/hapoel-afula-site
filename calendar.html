@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Календарь— Хапоэль Афула</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+   <div class="topbar">
+    <div class="brand"> 
+     <img src="Images/Hapoel%20Afula.jpg" alt="Логотип Хапоэль Афула" class="brand-logo">
+    <h1 class="brand-title">Хапоэль Афула</h1>
+   </div>     
+   <button class="menu-toggle" aria-controls="main-nav" aria-expanded="false">Меню</button>
+      <nav id="main-nav" class="nav" role="navigation">
+        <a href="index.html">Главная</a>
+        <a href="news.html">Новости</a>
+        <a href="photos.html">Фото</a>
+        <a href="videos.html">Видео</a>
+        <a href="calendar.html">Календарь</a>
+        <a href="team.html">Команда</a>
+        <a href="fanzone.html">Фан-зона</a>
+        <a href="about.html">О клубе</a>
+        <a href="contacts.html">Контакты</a>
+      </nav>
+ </div>
+  </header>
+    
+    <main class="container"> 
+   <!-- Календарь матчей -->
+        
+    <section id="calendar">
+      <h3 class="section-title">Календарь матчей</h3>
+      <p class="section-sub">Расписание и результаты</p>
+
+      <h4 class="kicker">Ближайшие матчи</h4>
+      <table class="table mt-8">
+        <thead><tr><th>Дата</th><th>Соперник</th><th>Место</th><th>Время</th></tr></thead>
+        <tbody>
+          <tr><td>15.12.2025</td><td>Маккаби Герцлия</td><td>Домашний</td><td>19:00</td></tr>
+          <tr><td>22.12.2025</td><td>Хапоэль Кирьят-Ям</td><td>Гостевой</td><td>20:30</td></tr>
+          <tr><td>29.12.2025</td><td>Хапоэль Рамат-Ган</td><td>Домашний</td><td>18:00</td></tr>
+        </tbody>
+      </table>
+
+      <h4 class="kicker mt-16">Прошедшие матчи</h4>
+      <table class="table mt-8">
+        <thead><tr><th>Дата</th><th>Соперник</th><th>Счёт</th></tr></thead>
+        <tbody>
+          <tr><td>08.12.2025</td><td>Хапоэль Ноф-ха-Галиль</td><td>1:1</td></tr>
+          <tr><td>01.12.2025</td><td>Маккаби Петах-Тиква</td><td>3:2</td></tr>
+          <tr><td>25.11.2025</td><td>Хапоэль Ришон Ле-Цион</td><td>3:0</td></tr>
+        </tbody>
+      </table>
+     </section>
+    </main>
+    
+    <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="muted">© 2025 Хапоэль Афула. Все права защищены.</div>
+      <div class="muted">Политика конфиденциальности • Условия использования</div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.getElementById('main-nav');
+    toggle?.addEventListener('click', () => {
+      const opened = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', opened ? 'true' : 'false');
+    });
+
+    // Smooth scroll (optional)
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (nav.classList.contains('open')) nav.classList.remove('open');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+ 

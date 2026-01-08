@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Фан-зона — Хапоэль Афула</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div class="brand">
+        <img src="Images/Hapoel%20Afula.jpg" alt="Логотип Хапоэль Афула" class="brand-logo">
+    <h1 class="brand-title">Хапоэль Афула</h1>
+   </div>     
+   <button class="menu-toggle" aria-controls="main-nav" aria-expanded="false">Меню</button>
+      <nav id="main-nav" class="nav" role="navigation">
+        <a href="index.html">Главная</a>
+        <a href="news.html">Новости</a>
+        <a href="photos.html">Фото</a>
+        <a href="videos.html">Видео</a>
+        <a href="calendar.html">Календарь</a>
+        <a href="team.html">Команда</a>
+        <a href="fanzone.html">Фан-зона</a>
+        <a href="about.html">О клубе</a>
+        <a href="contacts.html">Контакты</a>
+      </nav>
+    </div>
+  </header>
+    
+  <main class="container">
+   <!-- Фан-зона -->
+    <section id="fanzone">
+      <h3 class="section-title">Фан-зона</h3>
+      <p class="section-sub">Фото фанатов, кричалки и мерч</p>
+
+      <div class="grid grid-3">
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Фанаты" />
+          <div class="card-body">
+            <h4 class="card-title">Фото фанатов</h4>
+            <p class="card-text">Лучшие эмоции трибун.</p>
+            <a class="btn btn-green" href="#photos">Смотреть</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-body">
+            <h4 class="card-title">Кричалки и песни</h4>
+            <p class="card-text">Тексты и записи любимых песен.</p>
+            <a class="btn btn-green" href="#fanzone">Добавить кричалку</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-body">
+            <h4 class="card-title">Мерч</h4>
+            <p class="card-text">Футболки, шарфы, кепки, постеры.</p>
+            <a class="btn btn-red" href="#shop">Купить</a>
+          </div>
+        </article>
+      </div>
+    </section>
+    </main>
+    
+    <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="muted">© 2025 Хапоэль Афула. Все права защищены.</div>
+      <div class="muted">Политика конфиденциальности • Условия использования</div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.getElementById('main-nav');
+    toggle?.addEventListener('click', () => {
+      const opened = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', opened ? 'true' : 'false');
+    });
+
+    // Smooth scroll (optional)
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (nav.classList.contains('open')) nav.classList.remove('open');
+        }
+      });
+    });
+  </script>
+ </body>
+</html>

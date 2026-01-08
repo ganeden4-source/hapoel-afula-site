@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Фото — Хапоэль Афула</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+   <div class="topbar">
+    <div class="brand"> 
+      <img src="Images/Hapoel%20Afula.jpg" alt="Логотип Хапоэль Афула" class="brand-logo">
+    <h1 class="brand-title">Хапоэль Афула</h1>
+   </div>     
+   <button class="menu-toggle" aria-controls="main-nav" aria-expanded="false">Меню</button>
+      <nav id="main-nav" class="nav" role="navigation">
+        <a href="index.html">Главная</a>
+        <a href="news.html">Новости</a>
+        <a href="photos.html">Фото</a>
+        <a href="videos.html">Видео</a>
+        <a href="calendar.html">Календарь</a>
+        <a href="team.html">Команда</a>
+        <a href="fanzone.html">Фан-зона</a>
+        <a href="about.html">О клубе</a>
+        <a href="contacts.html">Контакты</a>
+      </nav>
+ </div>
+  </header>
+    
+    <main class="container"> 
+     <!-- Фото -->
+        
+    <section id="photos">    
+      <h3 class="section-title">Фото</h3>
+      <p class="section-sub">Матчи, болельщики, закулисье</p>
+      <div class="grid grid-4">
+        <!-- Пример фотокарточек -->
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Матч" />
+          <div class="card-body">
+            <span class="badge">Матчи</span>
+            <h4 class="card-title">Победный момент</h4>
+            <a class="btn btn-green" href="#photos">Смотреть</a>
+          </div>
+        </article>
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Болельщики" />
+          <div class="card-body">
+            <span class="badge">Болельщики</span>
+            <h4 class="card-title">Трибуны живут</h4>
+            <a class="btn btn-green" href="#photos">Смотреть</a>
+          </div>
+        </article>
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Закулисье" />
+          <div class="card-body">
+            <span class="badge">Закулисье</span>
+            <h4 class="card-title">Путь к игре</h4>
+            <a class="btn btn-green" href="#photos">Смотреть</a>
+          </div>
+        </article>
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Матч" />
+          <div class="card-body">
+            <span class="badge">Матчи</span>
+            <h4 class="card-title">Контроль мяча</h4>
+            <a class="btn btn-green" href="#photos">Смотреть</a>
+          </div>
+        </article>
+      </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="muted">© 2025 Хапоэль Афула. Все права защищены.</div>
+      <div class="muted">Политика конфиденциальности • Условия использования</div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.getElementById('main-nav');
+    toggle?.addEventListener('click', () => {
+      const opened = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', opened ? 'true' : 'false');
+    });
+
+    // Smooth scroll (optional)
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (nav.classList.contains('open')) nav.classList.remove('open');
+        }
+      });
+    });
+  </script>
+  </body>
+</html>   

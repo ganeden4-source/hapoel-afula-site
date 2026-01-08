@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Команда—Хапоэль Афула </title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div class="brand">
+        <img src="Images/Hapoel%20Afula.jpg" alt="Логотип Хапоэль Афула" class="brand-logo"> 
+    <h1 class="brand-title">Хапоэль Афула</h1>
+   </div>     
+   <button class="menu-toggle" aria-controls="main-nav" aria-expanded="false">Меню</button>
+      <nav id="main-nav" class="nav" role="navigation">
+        <a href="index.html">Главная</a>
+        <a href="news.html">Новости</a>
+        <a href="photos.html">Фото</a>
+        <a href="videos.html">Видео</a>
+        <a href="calendar.html">Календарь</a>
+        <a href="team.html">Команда</a>
+        <a href="fanzone.html">Фан-зона</a>
+        <a href="about.html">О клубе</a>
+        <a href="contacts.html">Контакты</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+<!-- Команда -->
+    <section id="team">
+      <h3 class="section-title">Команда</h3>
+      <p class="section-sub">Игроки и тренерский штаб</p>
+
+      <h4 class="kicker">Игроки</h4>
+      <div class="grid grid-4 mt-8">
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Игрок" />
+          <div class="card-body">
+            <h4 class="card-title">Адир Азруэль • #5</h4>
+            <p class="card-text">Защитник — 20 матчей, 2 гола</p>
+            <a class="btn btn-red" href="#team">Подробнее</a>
+          </div>
+        </article>
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Игрок" />
+          <div class="card-body">
+            <h4 class="card-title">Дани Леви • #10</h4>
+            <p class="card-text">Полузащитник — 22 матча, 5 голевых</p>
+            <a class="btn btn-red" href="#team">Подробнее</a>
+          </div>
+        </article>
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Игрок" />
+          <div class="card-body">
+            <h4 class="card-title">Омер Коэн • #9</h4>
+            <p class="card-text">Нападающий — 18 матчей, 8 голов</p>
+            <a class="btn btn-red" href="#team">Подробнее</a>
+          </div>
+        </article>
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Игрок" />
+          <div class="card-body">
+            <h4 class="card-title">Гиль Хазан • #1</h4>
+            <p class="card-text">Вратарь — 9 «сухих» матчей</p>
+            <a class="btn btn-red" href="#team">Подробнее</a>
+          </div>
+        </article>
+      </div>
+
+      <h4 class="kicker mt-16">Тренерский штаб</h4>
+      <div class="grid grid-3 mt-8">
+        <article class="card">
+          <div class="card-body">
+            <h4 class="card-title">Главный тренер</h4>
+            <p class="card-text">Стратегия прессинга и развитие молодёжи.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-body">
+            <h4 class="card-title">Тренер вратарей</h4>
+            <p class="card-text">Реакция, позиционирование, игра ногами.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-body">
+            <h4 class="card-title">Фитнес-тренер</h4>
+            <p class="card-text">Выносливость, восстановление, нагрузка.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+    </main>
+    
+    <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="muted">© 2025 Хапоэль Афула. Все права защищены.</div>
+      <div class="muted">Политика конфиденциальности • Условия использования</div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.getElementById('main-nav');
+    toggle?.addEventListener('click', () => {
+      const opened = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', opened ? 'true' : 'false');
+    });
+
+    // Smooth scroll (optional)
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (nav.classList.contains('open')) nav.classList.remove('open');
+        }
+      });
+    });
+  </script>
+ </body>
+</html>

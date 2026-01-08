@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Хапоэль Афула — официальный сайт клуба</title>
+
+  <!-- Шрифты -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Oswald:wght@600;700&family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --red: #D32F2F;
+      --dark-red: #B71C1C;
+      --white: #FFFFFF;
+      --black: #000000;
+      --dark-gray: #212121;
+      --green: #388E3C;
+      --dark-green: #2E7D32;
+      --light-gray: #F5F5F5;
+      --gray: #BDBDBD;
+    }
+
+    /* Базовые стили */
+    * { box-sizing: border-box; }
+    html, body { margin:0; padding:0; }
+    body {
+      font-family: 'Roboto', 'Open Sans', system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+      background: var(--white);
+      color: var(--black);
+      line-height: 1.55;
+    }
+
+    /* Header & Navigation */
+    header {
+      background: var(--red);
+      color: var(--white);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .topbar {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-logo {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--white);
+    }
+    .brand-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      margin: 0;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+    }
+    .nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 700;
+      padding: 8px 10px;
+      border-radius: 6px;
+    }
+    .nav a:hover { background: var(--dark-red); }
+
+    /* Mobile menu */
+    .menu-toggle {
+      display: none;
+      background: var(--dark-red);
+      color: var(--white);
+      border: none;
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    @media (max-width: 900px) {
+      .nav { display: none; }
+      .menu-toggle { display: inline-flex; }
+      .nav.open { display: flex; flex-direction: column; padding: 8px 16px; }
+    }
+
+    /* Layout */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 16px;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--white);
+      border-bottom: 2px solid var(--red);
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+    .card-media {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #ddd;
+      display: block;
+      object-fit: cover;
+    }
+    .card-body {
+      padding: 14px 16px 16px;
+    }
+    .card-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.25rem;
+      margin: 0 0 6px;
+    }
+    .card-meta {
+      color: var(--gray);
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+    .card-text { margin: 0 0 12px; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      color: var(--white);
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.05s ease;
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn-red { background: var(--red); }
+    .btn-red:hover { background: var(--dark-red); }
+    .btn-green { background: var(--green); }
+    .btn-green:hover { background: var(--dark-green); }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--red);
+      color: var(--red);
+    }
+    .btn-outline:hover {
+      background: var(--red);
+      color: var(--white);
+    }
+
+    /* Sections */
+    section { margin: 40px 0; }
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.6rem;
+      margin: 0 0 16px;
+      color: var(--red);
+    }
+    .section-sub {
+      color: var(--gray);
+      margin: -8px 0 16px;
+    }
+
+    /* Grids */
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+    .grid-2 { grid-template-columns: 1fr; }
+    .grid-3 { grid-template-columns: 1fr; }
+    .grid-4 { grid-template-columns: 1fr; }
+    @media (min-width: 640px) {
+      .grid-2 { grid-template-columns: repeat(2, 1fr); }
+      .grid-3 { grid-template-columns: repeat(2, 1fr); }
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 960px) {
+      .grid-3 { grid-template-columns: repeat(3, 1fr); }
+      .grid-4 { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    /* Special blocks */
+    .hero {
+      background: linear-gradient(135deg, var(--red), var(--dark-red));
+      color: var(--white);
+      border-radius: 16px;
+      padding: 24px;
+      display: grid;
+      gap: 16px;
+    }
+    .hero h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.8rem;
+      margin: 0;
+    }
+    .hero p { margin: 0; }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    .table th, .table td {
+      padding: 12px 10px;
+      border-bottom: 1px solid #eee;
+      text-align: left;
+    }
+    .table th {
+      background: var(--light-gray);
+      color: var(--red);
+      font-weight: 700;
+    }
+
+    .dark-block {
+      background: var(--dark-gray);
+      color: var(--white);
+      border-radius: 10px;
+      padding: 16px;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--black);
+      color: var(--gray);
+      margin-top: 40px;
+      padding: 24px 16px;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      gap: 16px;
+    }
+    .socials { display: flex; gap: 10px; flex-wrap: wrap; }
+    .socials a {
+      color: var(--white);
+      text-decoration: none;
+      padding: 6px 10px;
+      border-radius: 6px;
+      background: #111;
+    }
+    .socials a:hover { background: #222; }
+
+    /* Utilities */
+    .muted { color: var(--gray); }
+    .kicker { color: var(--red); font-weight: 700; }
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: var(--light-gray);
+      color: var(--black);
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+    .mt-8 { margin-top: 8px; }
+    .mt-16 { margin-top: 16px; }
+    .mb-16 { margin-bottom: 16px; }
+
+    /* Fake Digital-7 look (fallback) */
+    .digital {
+      font-family: 'Oswald', 'Montserrat', monospace;
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="topbar">
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true"></div>
+        <h1 class="brand-title">Хапоэль Афула</h1>
+      </div>
+      <button class="menu-toggle" aria-controls="main-nav" aria-expanded="false">Меню</button>
+      <nav id="main-nav" class="nav" role="navigation">
+        <a href="#home">Главная</a>
+        <a href="#news">Новости</a>
+        <a href="#photos">Фото</a>
+        <a href="#videos">Видео</a>
+        <a href="#calendar">Календарь</a>
+        <a href="#team">Команда</a>
+        <a href="#fanzone">Фан-зона</a>
+        <a href="#about">О клубе</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Главная -->
+    <section id="home">
+      <div class="hero">
+        <h2>Ближайший матч — Афула vs Герцлия</h2>
+        <p class="muted">Пятница, 19:00, стадион Афулы</p>
+        <div class="mt-8">
+          <a class="btn btn-green" href="#calendar">Подробнее</a>
+          <a class="btn btn-outline" href="#tickets">Билеты</a>
+        </div>
+      </div>
+
+      <h3 class="section-title mt-16">Новости дня</h3>
+      <p class="section-sub">Последние события клуба</p>
+      <div class="grid grid-3">
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Матч Афула" />
+          <div class="card-body">
+            <h4 class="card-title">Афула обыграла соперника 3:1</h4>
+            <div class="card-meta">15 декабря 2025 • Пресс-служба</div>
+            <p class="card-text">Яркая игра дома: команда показала характер и забрала три очка.</p>
+            <a class="btn btn-red" href="#news">Читать далее</a>
+          </div>
+        </article>
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Тренировка" />
+          <div class="card-body">
+            <h4 class="card-title">Тренировка перед дерби</h4>
+            <div class="card-meta">14 декабря 2025 • Тренерский штаб</div>
+            <p class="card-text">Команда отрабатывает стандарты и переходы при прессинге.</p>
+            <a class="btn btn-red" href="#news">Читать далее</a>
+          </div>
+        </article>
+        <article class="card dark">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Видео обзор" />
+          <div class="card-body">
+            <h4 class="card-title">Видео: обзор победы</h4>
+            <div class="card-meta">14 декабря 2025 • Медиа</div>
+            <p class="card-text">Лучшие моменты матча, интервью и комментарии тренера.</p>
+            <a class="btn btn-red" href="#videos">Смотреть</a>
+          </div>
+        </article>
+      </div>
+
+      <h3 class="section-title mt-16">Фото недели</h3>
+      <div class="grid grid-4">
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Фото 1" />
+          <div class="card-body">
+            <h4 class="card-title">Эмоции победы</h4>
+            <a class="btn btn-green" href="#photos">Открыть галерею</a>
+          </div>
+        </article>
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Фото 2" />
+          <div class="card-body">
+            <h4 class="card-title">Трибуны кипят</h4>
+            <a class="btn btn-green" href="#photos">Открыть галерею</a>
+          </div>
+        </article>
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Фото 3" />
+          <div class="card-body">
+            <h4 class="card-title">За кулисами</h4>
+            <a class="btn btn-green" href="#photos">Открыть галерею</a>
+          </div>
+        </article>
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Фото 4" />
+          <div class="card-body">
+            <h4 class="card-title">Детали игры</h4>
+            <a class="btn btn-green" href="#photos">Открыть галерею</a>
+          </div>
+        </article>
+      </div>
+
+      <h3 class="section-title mt-16">Турнирная таблица</h3>
+      <table class="table">
+        <thead>
+          <tr><th>Место</th><th>Команда</th><th>Очки</th></tr>
+        </thead>
+        <tbody class="digital">
+          <tr><td>1</td><td>Маккаби Петах-Тиква</td><td>28</td></tr>
+          <tr><td>2</td><td>Хапоэль Афула</td><td>26</td></tr>
+          <tr><td>3</td><td>Хапоэль Кирьят-Ям</td><td>24</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Новости -->
+    <section id="news">
+      <h3 class="section-title">Новости</h3>
+      <p class="section-sub">Лента событий клуба</p>
+      <div class="grid grid-3">
+        <!-- Пример карточек новостей -->
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Новость" />
+          <div class="card-body">
+            <h4 class="card-title">После матча: слова тренера</h4>
+            <div class="card-meta">13 декабря 2025 • Интервью</div>
+            <p class="card-text">Главный тренер поделился планами на следующий тур.</p>
+            <a class="btn btn-red" href="#news">Читать полностью</a>
+          </div>
+        </article>
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Новость" />
+          <div class="card-body">
+            <h4 class="card-title">Юниоры: победа 2:0</h4>
+            <div class="card-meta">12 декабря 2025 • Академия</div>
+            <p class="card-text">Молодежь показывает стабильный прогресс.</p>
+            <a class="btn btn-red" href="#news">Читать полностью</a>
+          </div>
+        </article>
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Новость" />
+          <div class="card-body">
+            <h4 class="card-title">Обновление билетов</h4>
+            <div class="card-meta">12 декабря 2025 • Клуб</div>
+            <p class="card-text">Появились новые пакеты для семейных болельщиков.</p>
+            <a class="btn btn-red" href="#news">Читать полностью</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Фото -->
+    <section id="photos">
+      <h3 class="section-title">Фото</h3>
+      <p class="section-sub">Матчи, болельщики, закулисье</p>
+      <div class="grid grid-4">
+        <!-- Пример фотокарточек -->
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Матч" />
+          <div class="card-body">
+            <span class="badge">Матчи</span>
+            <h4 class="card-title">Победный момент</h4>
+            <a class="btn btn-green" href="#photos">Смотреть</a>
+          </div>
+        </article>
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Болельщики" />
+          <div class="card-body">
+            <span class="badge">Болельщики</span>
+            <h4 class="card-title">Трибуны живут</h4>
+            <a class="btn btn-green" href="#photos">Смотреть</a>
+          </div>
+        </article>
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Закулисье" />
+          <div class="card-body">
+            <span class="badge">Закулисье</span>
+            <h4 class="card-title">Путь к игре</h4>
+            <a class="btn btn-green" href="#photos">Смотреть</a>
+          </div>
+        </article>
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Матч" />
+          <div class="card-body">
+            <span class="badge">Матчи</span>
+            <h4 class="card-title">Контроль мяча</h4>
+            <a class="btn btn-green" href="#photos">Смотреть</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Видео -->
+    <section id="videos">
+      <h3 class="section-title">Видео</h3>
+      <p class="section-sub">Обзоры, интервью, закулисье</p>
+      <div class="grid grid-3">
+        <article class="card" style="background: var(--dark-gray); color: var(--white);">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Обзор" />
+          <div class="card-body">
+            <h4 class="card-title">Обзор матча</h4>
+            <p class="card-text">Голы, моменты, аналитика.</p>
+            <a class="btn btn-red" href="#videos">Смотреть</a>
+          </div>
+        </article>
+        <article class="card" style="background: var(--dark-gray); color: var(--white);">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Интервью" />
+          <div class="card-body">
+            <h4 class="card-title">Интервью игрока</h4>
+            <p class="card-text">Мысли после победы.</p>
+            <a class="btn btn-red" href="#videos">Смотреть</a>
+          </div>
+        </article>
+        <article class="card" style="background: var(--dark-gray); color: var(--white);">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Закулисье" />
+          <div class="card-body">
+            <h4 class="card-title">Закулисье</h4>
+            <p class="card-text">Подготовка к дерби.</p>
+            <a class="btn btn-red" href="#videos">Смотреть</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Календарь матчей -->
+    <section id="calendar">
+      <h3 class="section-title">Календарь матчей</h3>
+      <p class="section-sub">Расписание и результаты</p>
+
+      <h4 class="kicker">Ближайшие матчи</h4>
+      <table class="table mt-8">
+        <thead><tr><th>Дата</th><th>Соперник</th><th>Место</th><th>Время</th></tr></thead>
+        <tbody>
+          <tr><td>15.12.2025</td><td>Маккаби Герцлия</td><td>Домашний</td><td>19:00</td></tr>
+          <tr><td>22.12.2025</td><td>Хапоэль Кирьят-Ям</td><td>Гостевой</td><td>20:30</td></tr>
+          <tr><td>29.12.2025</td><td>Хапоэль Рамат-Ган</td><td>Домашний</td><td>18:00</td></tr>
+        </tbody>
+      </table>
+
+      <h4 class="kicker mt-16">Прошедшие матчи</h4>
+      <table class="table mt-8">
+        <thead><tr><th>Дата</th><th>Соперник</th><th>Счёт</th></tr></thead>
+        <tbody>
+          <tr><td>08.12.2025</td><td>Хапоэль Ноф-ха-Галиль</td><td>1:1</td></tr>
+          <tr><td>01.12.2025</td><td>Маккаби Петах-Тиква</td><td>3:2</td></tr>
+          <tr><td>25.11.2025</td><td>Хапоэль Ришон Ле-Цион</td><td>3:0</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Команда -->
+    <section id="team">
+      <h3 class="section-title">Команда</h3>
+      <p class="section-sub">Игроки и тренерский штаб</p>
+
+      <h4 class="kicker">Игроки</h4>
+      <div class="grid grid-4 mt-8">
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Игрок" />
+          <div class="card-body">
+            <h4 class="card-title">Адир Азруэль • #5</h4>
+            <p class="card-text">Защитник — 20 матчей, 2 гола</p>
+            <a class="btn btn-red" href="#team">Подробнее</a>
+          </div>
+        </article>
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Игрок" />
+          <div class="card-body">
+            <h4 class="card-title">Дани Леви • #10</h4>
+            <p class="card-text">Полузащитник — 22 матча, 5 голевых</p>
+            <a class="btn btn-red" href="#team">Подробнее</a>
+          </div>
+        </article>
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Игрок" />
+          <div class="card-body">
+            <h4 class="card-title">Омер Коэн • #9</h4>
+            <p class="card-text">Нападающий — 18 матчей, 8 голов</p>
+            <a class="btn btn-red" href="#team">Подробнее</a>
+          </div>
+        </article>
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Игрок" />
+          <div class="card-body">
+            <h4 class="card-title">Гиль Хазан • #1</h4>
+            <p class="card-text">Вратарь — 9 «сухих» матчей</p>
+            <a class="btn btn-red" href="#team">Подробнее</a>
+          </div>
+        </article>
+      </div>
+
+      <h4 class="kicker mt-16">Тренерский штаб</h4>
+      <div class="grid grid-3 mt-8">
+        <article class="card">
+          <div class="card-body">
+            <h4 class="card-title">Главный тренер</h4>
+            <p class="card-text">Стратегия прессинга и развитие молодёжи.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-body">
+            <h4 class="card-title">Тренер вратарей</h4>
+            <p class="card-text">Реакция, позиционирование, игра ногами.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-body">
+            <h4 class="card-title">Фитнес-тренер</h4>
+            <p class="card-text">Выносливость, восстановление, нагрузка.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Фан-зона -->
+    <section id="fanzone">
+      <h3 class="section-title">Фан-зона</h3>
+      <p class="section-sub">Фото фанатов, кричалки и мерч</p>
+
+      <div class="grid grid-3">
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Фанаты" />
+          <div class="card-body">
+            <h4 class="card-title">Фото фанатов</h4>
+            <p class="card-text">Лучшие эмоции трибун.</p>
+            <a class="btn btn-green" href="#photos">Смотреть</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-body">
+            <h4 class="card-title">Кричалки и песни</h4>
+            <p class="card-text">Тексты и записи любимых песен.</p>
+            <a class="btn btn-green" href="#fanzone">Добавить кричалку</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-body">
+            <h4 class="card-title">Мерч</h4>
+            <p class="card-text">Футболки, шарфы, кепки, постеры.</p>
+            <a class="btn btn-red" href="#shop">Купить</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- О клубе -->
+    <section id="about">
+      <h3 class="section-title">О клубе</h3>
+      <p class="section-sub">История, миссия и стадион</p>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <div class="card-body">
+            <h4 class="card-title">История клуба</h4>
+            <p class="card-text">Ключевые вехи развития, знаковые матчи и легенды.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-body">
+            <h4 class="card-title">Миссия и ценности</h4>
+            <p class="card-text">Поддержка сообщества, развитие академии, честная игра.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="dark-block mt-16">
+        <h4 class="card-title">Стадион Афулы</h4>
+        <p class="card-text">Вместимость, особенности и атмосфера матчей.</p>
+      </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contacts">
+      <h3 class="section-title">Контакты</h3>
+      <p class="section-sub">Будем на связи</p>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <div class="card-body">
+            <h4 class="card-title">Контактная информация</h4>
+            <p class="card-text">
+              Адрес: стадион «Афула», Северный округ, Израиль<br/>
+              Телефон: +972 (пример)<br/>
+              Email: info@hapoelafula.co.il<br/>
+              Часы работы: Пн–Пт, 9:00–18:00
+            </p>
+            <div class="socials mt-8">
+              <a href="#" aria-label="Facebook">Facebook</a>
+              <a href="#" aria-label="Instagram">Instagram</a>
+              <a href="#" aria-label="Twitter">Twitter</a>
+              <a href="#" aria-label="YouTube">YouTube</a>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-body">
+            <h4 class="card-title">Форма обратной связи</h4>
+            <form>
+              <div class="grid grid-2">
+                <input type="text" placeholder="Имя" aria-label="Имя" style="padding:10px;border:1px solid #ddd;border-radius:8px;">
+                <input type="email" placeholder="Email" aria-label="Email" style="padding:10px;border:1px solid #ddd;border-radius:8px;">
+              </div>
+              <input type="text" placeholder="Тема" aria-label="Тема" style="margin-top:10px;padding:10px;border:1px solid #ddd;border-radius:8px;width:100%;">
+              <textarea placeholder="Сообщение" aria-label="Сообщение" rows="4" style="margin-top:10px;padding:10px;border:1px solid #ddd;border-radius:8px;width:100%;"></textarea>
+              <button type="submit" class="btn btn-red mt-8">Отправить</button>
+            </form>
+          </div>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="muted">© 2025 Хапоэль Афула. Все права защищены.</div>
+      <div class="muted">Политика конфиденциальности • Условия использования</div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.getElementById('main-nav');
+    toggle?.addEventListener('click', () => {
+      const opened = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', opened ? 'true' : 'false');
+    });
+
+    // Smooth scroll (optional)
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (nav.classList.contains('open')) nav.classList.remove('open');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

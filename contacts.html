@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Контакты — Хапоэль Афула</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div class="brand">
+        <img src="Images/Hapoel%20Afula.jpg" alt="Логотип Хапоэль Афула" class="brand-logo">
+     <div class="brand-logo" aria-hidden="true"></div>
+    <h1 class="brand-title">Хапоэль Афула</h1>
+   </div>     
+   <button class="menu-toggle" aria-controls="main-nav" aria-expanded="false">Меню</button>
+      <nav id="main-nav" class="nav" role="navigation">
+        <a href="index.html">Главная</a>
+        <a href="news.html">Новости</a>
+        <a href="photos.html">Фото</a>
+        <a href="videos.html">Видео</a>
+        <a href="calendar.html">Календарь</a>
+        <a href="team.html">Команда</a>
+        <a href="fanzone.html">Фан-зона</a>
+        <a href="about.html">О клубе</a>
+        <a href="contacts.html">Контакты</a>
+      </nav>
+    </div>
+  </header>
+    
+  <main class="container">
+   <!-- Контакты -->
+    <section id="contacts">
+      <h3 class="section-title">Контакты</h3>
+      <p class="section-sub">Будем на связи</p>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <div class="card-body">
+            <h4 class="card-title">Контактная информация</h4>
+            <p class="card-text">
+              Адрес: стадион «Афула», Северный округ, Израиль<br/>
+              Телефон: +972 (пример)<br/>
+              Email: info@hapoelafula.co.il<br/>
+              Часы работы: Пн–Пт, 9:00–18:00
+            </p>
+            <div class="socials mt-8">
+              <a href="#" aria-label="Facebook">Facebook</a>
+              <a href="#" aria-label="Instagram">Instagram</a>
+              <a href="#" aria-label="Twitter">Twitter</a>
+              <a href="#" aria-label="YouTube">YouTube</a>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-body">
+            <h4 class="card-title">Форма обратной связи</h4>
+            <form>
+              <div class="grid grid-2">
+                <input type="text" placeholder="Имя" aria-label="Имя" style="padding:10px;border:1px solid #ddd;border-radius:8px;">
+                <input type="email" placeholder="Email" aria-label="Email" style="padding:10px;border:1px solid #ddd;border-radius:8px;">
+              </div>
+              <input type="text" placeholder="Тема" aria-label="Тема" style="margin-top:10px;padding:10px;border:1px solid #ddd;border-radius:8px;width:100%;">
+              <textarea placeholder="Сообщение" aria-label="Сообщение" rows="4" style="margin-top:10px;padding:10px;border:1px solid #ddd;border-radius:8px;width:100%;"></textarea>
+              <button type="submit" class="btn btn-red mt-8">Отправить</button>
+            </form>
+          </div>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="muted">© 2025 Хапоэль Афула. Все права защищены.</div>
+      <div class="muted">Политика конфиденциальности • Условия использования</div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.getElementById('main-nav');
+    toggle?.addEventListener('click', () => {
+      const opened = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', opened ? 'true' : 'false');
+    });
+
+    // Smooth scroll (optional)
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (nav.classList.contains('open')) nav.classList.remove('open');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

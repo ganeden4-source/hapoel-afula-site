@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Хапоэль Афула — Главная</title>
+  <!-- Шрифты -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Oswald:wght@600;700&family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">  
+    
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div class="brand">
+         <img src="Images/Hapoel%20Afula.jpg" alt="Логотип Хапоэль Афула" class="brand-logo">
+    <h1 class="brand-title">Хапоэль Афула</h1>
+   </div>     
+   <button class="menu-toggle" aria-controls="main-nav" aria-expanded="false">Меню</button>
+      <nav id="main-nav" class="nav" role="navigation">
+        <a href="index.html">Главная</a>
+        <a href="news.html">Новости</a>
+        <a href="photos.html">Фото</a>
+        <a href="videos.html">Видео</a>
+        <a href="calendar.html">Календарь</a>
+        <a href="team.html">Команда</a>
+        <a href="fanzone.html">Фан-зона</a>
+        <a href="about.html">О клубе</a>
+        <a href="contacts.html">Контакты</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Главная -->
+  <section id="home">
+      <div class="hero">
+        <h2>Ближайший матч — Афула vs Герцлия</h2>
+        <p class="muted">Пятница, 19:00, стадион Афулы</p>
+        <div class="mt-8">
+          <a class="btn btn-green" href="#calendar">Подробнее</a>
+          <a class="btn btn-outline" href="#tickets">Билеты</a>
+        </div>
+      </div>
+
+      <h3 class="section-title mt-16">Новости дня</h3>
+      <p class="section-sub">Последние события клуба</p>
+      <div class="grid grid-3">
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Матч Афула" />
+          <div class="card-body">
+            <h4 class="card-title">Афула обыграла соперника 3:1</h4>
+            <div class="card-meta">15 декабря 2025 • Пресс-служба</div>
+            <p class="card-text">Яркая игра дома: команда показала характер и забрала три очка.</p>
+            <a class="btn btn-red" href="#news">Читать далее</a>
+          </div>
+        </article>
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Тренировка" />
+          <div class="card-body">
+            <h4 class="card-title">Тренировка перед дерби</h4>
+            <div class="card-meta">14 декабря 2025 • Тренерский штаб</div>
+            <p class="card-text">Команда отрабатывает стандарты и переходы при прессинге.</p>
+            <a class="btn btn-red" href="#news">Читать далее</a>
+          </div>
+        </article>
+        <article class="card dark">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Видео обзор" />
+          <div class="card-body">
+            <h4 class="card-title">Видео: обзор победы</h4>
+            <div class="card-meta">14 декабря 2025 • Медиа</div>
+            <p class="card-text">Лучшие моменты матча, интервью и комментарии тренера.</p>
+            <a class="btn btn-red" href="#videos">Смотреть</a>
+          </div>
+        </article>
+      </div>
+
+      <h3 class="section-title mt-16">Фото недели</h3>
+      <div class="grid grid-4">
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Фото 1" />
+          <div class="card-body">
+            <h4 class="card-title">Эмоции победы</h4>
+            <a class="btn btn-green" href="#photos">Открыть галерею</a>
+          </div>
+        </article>
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Фото 2" />
+          <div class="card-body">
+            <h4 class="card-title">Трибуны кипят</h4>
+            <a class="btn btn-green" href="#photos">Открыть галерею</a>
+          </div>
+        </article>
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Фото 3" />
+          <div class="card-body">
+            <h4 class="card-title">За кулисами</h4>
+            <a class="btn btn-green" href="#photos">Открыть галерею</a>
+          </div>
+        </article>
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Фото 4" />
+          <div class="card-body">
+            <h4 class="card-title">Детали игры</h4>
+            <a class="btn btn-green" href="#photos">Открыть галерею</a>
+          </div>
+        </article>
+      </div>
+
+      <h3 class="section-title mt-16">Турнирная таблица</h3>
+      <table class="table">
+        <thead>
+          <tr><th>Место</th><th>Команда</th><th>Очки</th></tr>
+        </thead>
+        <tbody class="digital">
+          <tr><td>1</td><td>Маккаби Петах-Тиква</td><td>28</td></tr>
+          <tr><td>2</td><td>Хапоэль Афула</td><td>26</td></tr>
+          <tr><td>3</td><td>Хапоэль Кирьят-Ям</td><td>24</td></tr>
+        </tbody>
+      </table>
+      </section>
+    </main>
+    
+    <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="muted">© 2025 Хапоэль Афула. Все права защищены.</div>
+      <div class="muted">Политика конфиденциальности • Условия использования</div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.getElementById('main-nav');
+    toggle?.addEventListener('click', () => {
+      const opened = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', opened ? 'true' : 'false');
+    });
+
+    // Smooth scroll (optional)
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (nav.classList.contains('open')) nav.classList.remove('open');
+        }
+      });
+    });
+  </script>
+    </body>
+</html>

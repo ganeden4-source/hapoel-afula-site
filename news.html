@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Новости — Хапоэль Афула</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div class="brand">
+       <img src="Images/Hapoel%20Afula.jpg" alt="Логотип Хапоэль Афула" class="brand-logo">
+    <h1 class="brand-title">Хапоэль Афула</h1>
+   </div>     
+   <button class="menu-toggle" aria-controls="main-nav" aria-expanded="false">Меню</button>
+      <nav id="main-nav" class="nav" role="navigation">
+        <a href="index.html">Главная</a>
+        <a href="news.html">Новости</a>
+        <a href="photos.html">Фото</a>
+        <a href="videos.html">Видео</a>
+        <a href="calendar.html">Календарь</a>
+        <a href="team.html">Команда</a>
+        <a href="fanzone.html">Фан-зона</a>
+        <a href="about.html">О клубе</a>
+        <a href="contacts.html">Контакты</a>
+      </nav>
+    </div>
+  </header>
+    
+  <main class="container">
+     <!-- Новости -->
+   
+      <section id="news">
+      <h3 class="section-title">Новости</h3>
+      <p class="section-sub">Лента событий клуба</p>
+          
+      <div class="grid grid-3" id="news-container"></div>
+
+        <!-- Пример карточек новостей -->
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Новость" />
+          <div class="card-body">
+            <h4 class="card-title">После матча: слова тренера</h4>
+            <div class="card-meta">13 декабря 2025 • Интервью</div>
+            <p class="card-text">Главный тренер поделился планами на следующий тур.</p>
+            <a class="btn btn-red" href="#news">Читать полностью</a>
+          </div>
+        </article>
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Новость" />
+          <div class="card-body">
+            <h4 class="card-title">Юниоры: победа 2:0</h4>
+            <div class="card-meta">12 декабря 2025 • Академия</div>
+            <p class="card-text">Молодежь показывает стабильный прогресс.</p>
+            <a class="btn btn-red" href="#news">Читать полностью</a>
+          </div>
+        </article>
+        <article class="card">
+          <img class="card-media" src="https://via.placeholder.com/800x450" alt="Новость" />
+          <div class="card-body">
+            <h4 class="card-title">Обновление билетов</h4>
+            <div class="card-meta">12 декабря 2025 • Клуб</div>
+            <p class="card-text">Появились новые пакеты для семейных болельщиков.</p>
+            <a class="btn btn-red" href="#news">Читать полностью</a>
+          </div>
+        </article>
+      </div>
+     </section>
+    </main>
+    <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="muted">© 2025 Хапоэль Афула. Все права защищены.</div>
+      <div class="muted">Политика конфиденциальности • Условия использования</div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.getElementById('main-nav');
+    toggle?.addEventListener('click', () => {
+      const opened = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', opened ? 'true' : 'false');
+    });
+
+    // Smooth scroll (optional)
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (nav.classList.contains('open')) nav.classList.remove('open');
+        }
+      });
+    });
+  </script>
+    <script>
+  const newsContainer = document.getElementById("news-container");
+  let newsData = [];
+
+  // Загружаем новости из JSON
+  function loadNews() {
+    fetch("data/news.json")
+      .then(res => res.json())
+      .then(data => {
+        newsData = data;
+        renderNews();
+      });
+  }
+
+  // Рендер карточек
+  function renderNews() {
+    newsContainer.innerHTML = "";
+
+    newsData.forEach(item => {
+      const card = document.createElement("article");
+      card.className = "card";
+
+      card.innerHTML = `
+        <img class="card-media" src="${item.image}" alt="Новость" />
+        <div class="card-body">
+          <h4 class="card-title">${item.title}</h4>
+          <div class="card-meta">${item.date} • ${item.category}</div>
+          <p class="card-text">${item.text}</p>
+          <a class="btn btn-red" href="#news">Читать полностью</a>
+        </div>
+      `;
+
+      newsContainer.appendChild(card);
+    });
+  }
+
+  // Автоматическое добавление новости каждые 5 секунд
+  setInterval(() => {
+    const newItem = {
+      title: "Автоматическая новость " + (newsData.length + 1),
+      category: "Система",
+      date: new Date().toLocaleDateString("ru-RU"),
+      text: "Эта новость была добавлена автоматически.",
+      image: "https://via.placeholder.com/800x450"
+    };
+
+    newsData.unshift(newItem); // добавляем в начало
+    renderNews();
+  }, 5000);
+
+  // Старт
+  loadNews();
+</script>
+
+    
+    </body>
+</html>
