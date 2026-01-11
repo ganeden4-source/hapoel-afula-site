@@ -1,0 +1,10 @@
+{
+  "name": "hapoel-afula-site",
+  "version": "1.0.0",
+  "description": "Auto-update news for Hapoel Afula site",
+  "main": "scripts/fetch-news.js",
+  "scripts": {
+    "start": "node scripts/fetch-news.js"
+  },
+  "dependencies": {}
+}
